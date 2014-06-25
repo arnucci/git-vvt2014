@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>GIT de survie (ou pas)</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="author" content="Arnaud Salvucci / Geoffroy Desvernay">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -75,6 +75,57 @@
 					   <li>Un tuto pas à pas bien fait : <a href="http://githowto.com/">http://githowto.com/</a></li>
 					 </ul>
 				</section>
+
+<!-- exemple dhcp -->
+<section>
+  <h2>M...., pourquoi le DHCP tourne plus ?</h2>
+  <ul>
+    <li class="fragment"><code>git log /usr/local/etc/dhcpd.conf</code><pre>
+commit 2f8e82d5fe0230bd1469ffb24159b60e12bea6b1
+Author: Geoffroy Desvernay &lt;dgeo@centrale-marseille.fr&gt;
+Date:   Wed Jun 25 23:20:16 2014 +0200
+
+    finalement, back to linux
+
+commit 7b41ef11383feab1f86600628c1f44a5d4a5c701
+Author: Geoffroy Desvernay &lt;dgeo@centrale-marseille.fr&gt;
+Date:   Wed Jun 25 23:19:18 2014 +0200
+
+    install pxe freebsd pour pcd
+</pre></li>
+  </ul>
+</section>
+<section>
+  <h2>Mais il a fait quoi ce … ?</h2>
+    <li class="fragment"><code>git diff 7b41ef1..2f8e82d</code><pre><code>
+diff --git a/usr/local/etc/dhcpd.conf b/usr/local/etc/dhcpd.conf
+index 6d58126..93f611b 100644
+--- a/usr/local/etc/dhcpd.conf
++++ b/usr/local/etc/dhcpd.conf
+@@ -641,9 +641,9 @@ option domain-name-servers 147.94.19.141;
+     hardware ethernet 00:21:70:bd:fa:cf;
+     fixed-address      147.94.19.170;
+     next-server 147.94.19.145;
+-    filename "freebsd/amd64/10-live/boot/pxeboot";
+-    option root-path "sheep.ec-m.fr:/tftpboot/freebsd/amd64/10-live";
+-    #filename "pxelinux.0";
++//    filename "freebsd/amd64/10-live/boot/pxeboot";
++//    option root-path "sheep.ec-m.fr:/tftpboot/freebsd/amd64/10-live";
++    filename "pxelinux.0";
+   }
+   host pcd2 {
+        hardware ethernet 00:1c:23:20:5b:38;
+</code></pre></li>
+  </ul>
+</section>
+<section>
+  <h2>ca marchait mieux avant !</h2>
+    <li><code>git chackout 97ae3ab2cdd1c2b0c86bd0cd473b8741939f429c /usr/local/etc/dhcpd.conf</code></li>
+    <li class="fragment"><code>service isc-dhcpd restart</code></li>
+    <li class="fragment"><code>git commit -m "dgeo avait envore trop bu" /usr/local/etc/dhcpd.conf</code></li>
+  </h2>
+</section>
+    
 
 				<!-- Example of nested vertical slides -->
 				<section>
