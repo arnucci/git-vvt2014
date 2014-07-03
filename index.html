@@ -152,8 +152,7 @@ hardware ethernet 00:1c:23:20:5b:38;
 				<section>
 				  <section>
 				    <h2>Euh, on peut avoir pareil, mais en 5mn ?</h2>
-				    <pre class="fragment"><code>
-#!/bin/sh
+				    <pre class="fragment"><code>#!/bin/sh
 apt-get install git
 cd /
 git init
@@ -164,12 +163,10 @@ git commit -m "Premier import"
 				  <section>
 				    <h2>Mouais… et les finesses ?</h2>
 				    <ul>
-				      <li class="fragment">dans /root/.profile<pre><code>
-# pour pouvoir taper 'git' ailleurs que dans /
+				      <li class="fragment">dans /root/.profile<pre><code># pour pouvoir taper 'git' ailleurs que dans /
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=yes
 </code></pre></li>
-				      <li class="fragment">dans /.gitignore<pre>
-*~
+				      <li class="fragment">dans /.gitignore<pre>*~
 *\#
 *.bak
 *.orig
@@ -185,6 +182,32 @@ mtab
 				  </section>
 				</section>
 
+				<!-- exemple tftp rezo -->
+				<section>
+				  <section>
+				    <h2>Oui, mais dans ASR, y'a R</h2>
+				    <p class="fragment">… et dans cisco/HP/xtream y'a pas apt-get :(</p>
+				    <p class="fragment">Mais y'a tftp/ssh (y'a encore telnet ?!?)</p>
+				  </section>
+				  <section>
+				    <h2>L'équipe réseau ECM</h2>
+				    <ul><li class="fragment">Un serveur tftp <br><code>copy run tftp://1.2.3.4/ma.conf</code></li>
+				      <li class="fragment">Un portable + un cable série + rsync /tftpboot</li>
+				      <li class="fragment">+GIT:<ul>
+				        <li>Un historique de tout</li>
+				        <li>Dupliqué (avec l'historique) sur les portables <s>rsync</s> <code>git clone/pull</code></li>
+				        <li>+ la "forge" pour visualiser</li>
+				      </ul></li>
+				    </ul>
+				  </section>
+				  <section>
+				    <h2>La forge ?</h2>
+				    <p class="fragment">Chez nous: redmine + redmine_git_hosting + gitolite</p>
+				    <p class="fragment"><img src="img/forge.png" /></p>
+				  </section>
+				</section>
+
+				<!-- workflows -->
 				<section>
 				  <section data-transition="none">
 				    <h2>Les branches</h2>
@@ -239,8 +262,7 @@ mtab
 				<section>
 				  <h2>Les bonnes pratiques</h2>
 				  <p>Messages de commit: 50/72</p>
-				  <p><code><pre>
-Ajout de pc-machine1
+				  <p><code><pre>Ajout de pc-machine1
 
 J'ai ajouté dans le DNS et le DHCP une nouvelle machine.
 Ceci rentre dans mes attributions d'après la note de service
